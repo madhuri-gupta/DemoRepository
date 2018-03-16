@@ -7,7 +7,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file="header.jsp" %>
 <p>
-<form action="signup.do" method="post">
+    
+<form action="signuppage.do" method="post">
             Employee ID :<input type="text" name="employeeid" />
             <br/>
             Employee Name :<input type="text" name="employeename" />

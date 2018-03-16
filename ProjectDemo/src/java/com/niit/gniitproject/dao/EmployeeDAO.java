@@ -18,4 +18,5 @@ public interface EmployeeDAO {
     List<Employee> getAllEmployees();
     Employee getEmployeeByID(int employeeID);
     int updateEmployee(int employeeID, Employee employee);
+    boolean isUserValid(String employeename,String email);
 }

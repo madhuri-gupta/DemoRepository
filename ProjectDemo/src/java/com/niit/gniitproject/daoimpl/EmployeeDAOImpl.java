@@ -131,5 +131,25 @@ public class EmployeeDAOImpl implements EmployeeDAO {
         }
         return count;
     }
+
+    @Override
+    public boolean isUserValid(String employeename, String email) {
+        try{
+            Connection connection = DBConnection.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement("select * from employees where employeename=? and email=?");
+            preparedStatement.setString(1, employeename);
+            preparedStatement.setString(2, email);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if(resultSet !=null){
+             return resultSet.next();
+            }
+               
+        }
+        catch (SQLException ex) {
+            Logger.getLogger(EmployeeDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.out.println("Not Logging In");
+        return false;
+    }
     
 }

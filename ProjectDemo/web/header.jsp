@@ -19,6 +19,8 @@
             <li><a href="contactus.jsp">Contact Us</a></li>
             <li><a href="faqs.jsp">FAQ</a></li>
             <li><a href="signup.jsp">Sign Up</a></li>
+            <li><a href="signin.jsp">Sign In</a></li>
+            <li>Welcome <%out.println(session.getAttribute("loginid")); %></li>
         </ul>
     </body>
 </html>
