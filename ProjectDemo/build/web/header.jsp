@@ -21,6 +21,7 @@
             <li><a href="signup.jsp">Sign Up</a></li>
             <li><a href="signin.jsp">Sign In</a></li>
             <li>Welcome <%out.println(session.getAttribute("loginid")); %></li>
+            <li><a href="employeelist.view"> Employee List</a></li>
         </ul>
     </body>
 </html>

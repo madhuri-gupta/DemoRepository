@@ -8,6 +8,10 @@
         <servlet-name>SignInServlet</servlet-name>
         <servlet-class>com.niiit.gniitproject.controllers.SignInServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>EmployeeListServlet</servlet-name>
+        <servlet-class>com.niiit.gniitproject.controllers.EmployeeListServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>SignUpServlet</servlet-name>
         <url-pattern>/signup.do</url-pattern>
@@ -15,6 +19,10 @@
     <servlet-mapping>
         <servlet-name>SignInServlet</servlet-name>
         <url-pattern>/signin.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EmployeeListServlet</servlet-name>
+        <url-pattern>/employeelist.view</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
