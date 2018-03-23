@@ -36,15 +36,25 @@ public class EditEmployeeServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
              int employeeid;
-            String employeename;
-            String email;
-            String joindate;
+           
+            String action = request.getParameter("action");
+            
             employeeid = Integer.parseInt(request.getParameter("employeeid"));
-            employeename = request.getParameter("employeename");
-            email = request.getParameter("email");
-            joindate = request.getParameter("joindate");
             EmployeeDAO employeeDAO = new EmployeeDAOImpl();
-            int count = employeeDAO.updateEmployee(employeeid,new Employee(employeename,email,joindate));
+            int count = 0;
+            if(action.equals("Save Changes")){
+               String employeename;
+               String email;
+               String joindate;    
+               employeename = request.getParameter("employeename");
+               email = request.getParameter("email");
+                joindate = request.getParameter("joindate");
+                
+                count = employeeDAO.updateEmployee(employeeid,new Employee(employeename,email,joindate));
+                }
+            else if(action.equals("Delete")){
+                count = employeeDAO.deleteEmployee(employeeid);
+            }
              RequestDispatcher rd = null;
             if(count>0){
                rd = request.getRequestDispatcher("employeelist.view");

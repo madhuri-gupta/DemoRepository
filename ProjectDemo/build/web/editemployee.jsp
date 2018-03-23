@@ -10,7 +10,7 @@
 <%@include file="header.jsp" %>
 <p>
     
-<form action="editemployee.do" method="post">
+<form action="editemployee.do" method="get">
 <!--            Employee ID :<input type="text" name="employeeid" />
             <br/>-->
 <%
@@ -24,7 +24,8 @@ request.setAttribute("employee",employee);
             <br/>
             JOIN DATE :<input type="text" name="joindate" value="${employee.joindate}"/>
             <br/>
-            <input type="submit" value="Submit" />
+            <input type="submit" name="action" value="Save Changes" />
+            <input type="submit" name="action"  value="Delete" />
         </form>
    </p>
 <%@include file="footer.jsp" %>

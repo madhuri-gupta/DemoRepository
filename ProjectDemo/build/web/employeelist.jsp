@@ -25,9 +25,9 @@
             <td><c:out value="${employee.employeeName}"/></td>
             <td><c:out value="${employee.email}"/></td>
             <td><c:out value="${employee.joindate}"/></td>
+            <!--<td><a href="editemployee.jsp?empid=${employee.employeeID}">Details</a></td>-->
             <td><a href="editemployee.jsp?empid=${employee.employeeID}">Details</a></td>
-            <td><a href="editemployee.jsp?empid=${employee.employeeID}">Edit</a></td>
-            <td><a href="editemployee.jsp?empid=${employee.employeeID}">Delete</a></td>
+            <!--<td><a href="editemployee.jsp?empid=${employee.employeeID}">Delete</a></td>-->
         </tr>
         </c:forEach>
         <%--</c:if>--%>
