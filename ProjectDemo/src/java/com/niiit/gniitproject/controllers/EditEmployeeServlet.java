@@ -10,7 +10,6 @@ import com.niit.gniitproject.daoimpl.EmployeeDAOImpl;
 import com.niit.gniitproject.entities.Employee;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -21,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author MRuser
  */
-public class EmployeeListServlet extends HttpServlet {
+public class EditEmployeeServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,17 +35,25 @@ public class EmployeeListServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            EmployeeDAO employeeDAO = new EmployeeDAOImpl ();
-            List<Employee> employeeList = employeeDAO.getAllEmployees();
-            System.out.println("No of Records " + employeeList.size());
-            if(employeeList.size()>0){
-                request.setAttribute("employeeList", employeeList);
-                System.out.println("No of records " + employeeList.size());
-                RequestDispatcher rd = request.getRequestDispatcher("employeelist.jsp");
-                rd.forward(request, response);
-        }
+             int employeeid;
+            String employeename;
+            String email;
+            String joindate;
+            employeeid = Integer.parseInt(request.getParameter("employeeid"));
+            employeename = request.getParameter("employeename");
+            email = request.getParameter("email");
+            joindate = request.getParameter("joindate");
+            EmployeeDAO employeeDAO = new EmployeeDAOImpl();
+            int count = employeeDAO.updateEmployee(employeeid,new Employee(employeename,email,joindate));
+             RequestDispatcher rd = null;
+            if(count>0){
+               rd = request.getRequestDispatcher("employeelist.view");
             }
+            else{
+                rd = request.getRequestDispatcher("editemployee.jsp?empid="+employeeid);
+            }
+            rd.include(request,response);
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

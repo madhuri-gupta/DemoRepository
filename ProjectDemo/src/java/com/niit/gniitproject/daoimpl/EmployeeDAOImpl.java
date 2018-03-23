@@ -64,10 +64,12 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     public List<Employee> getAllEmployees() {
         List<Employee> employeeList = null;
         try {
+            
             Connection connection = DBConnection.getConnection(); 
             PreparedStatement preparedStatement = connection.prepareStatement("select * from employees");
             ResultSet resultSet = preparedStatement.executeQuery();
             employeeList = new ArrayList<Employee>();
+            
             if(resultSet!=null){
                 //resultSet.first();
                 while(resultSet.next()){
